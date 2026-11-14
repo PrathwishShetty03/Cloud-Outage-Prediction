@@ -1,0 +1,2002 @@
+[
+  {
+    "timestamp": 1788171719.017945,
+    "action": "hold",
+    "current": 0,
+    "desired": 0,
+    "healthy": 0,
+    "in_cooldown": true,
+    "reason": "COOLDOWN: 5.5s remaining (blocked scale_up 0->1)",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788171705.907182,
+    "action": "hold",
+    "current": 0,
+    "desired": 0,
+    "healthy": 0,
+    "in_cooldown": true,
+    "reason": "COOLDOWN: 18.6s remaining (blocked scale_up 0->1)",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788171692.749053,
+    "action": "hold",
+    "current": 0,
+    "desired": 0,
+    "healthy": 0,
+    "in_cooldown": true,
+    "reason": "COOLDOWN: 31.8s remaining (blocked scale_up 0->1)",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788171679.523625,
+    "action": "scale_up",
+    "current": 0,
+    "desired": 1,
+    "healthy": 0,
+    "in_cooldown": false,
+    "reason": "SCALE_UP: replicas 0 < min 1",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788171666.2206924,
+    "action": "hold",
+    "current": 0,
+    "desired": 0,
+    "healthy": 0,
+    "in_cooldown": true,
+    "reason": "COOLDOWN: 11.5s remaining (blocked scale_up 0->1)",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788171651.354829,
+    "action": "hold",
+    "current": 0,
+    "desired": 0,
+    "healthy": 0,
+    "in_cooldown": true,
+    "reason": "COOLDOWN: 26.3s remaining (blocked scale_up 0->1)",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788171632.6725612,
+    "action": "scale_up",
+    "current": 0,
+    "desired": 1,
+    "healthy": 0,
+    "in_cooldown": false,
+    "reason": "SCALE_UP: replicas 0 < min 1",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788171613.0479114,
+    "action": "hold",
+    "current": 0,
+    "desired": 0,
+    "healthy": 0,
+    "in_cooldown": true,
+    "reason": "COOLDOWN: 18.7s remaining (blocked scale_up 0->1)",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788171599.9161057,
+    "action": "hold",
+    "current": 0,
+    "desired": 0,
+    "healthy": 0,
+    "in_cooldown": true,
+    "reason": "COOLDOWN: 31.8s remaining (blocked scale_up 0->1)",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788171586.7517283,
+    "action": "scale_up",
+    "current": 0,
+    "desired": 1,
+    "healthy": 0,
+    "in_cooldown": false,
+    "reason": "SCALE_UP: replicas 0 < min 1",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788171573.6558886,
+    "action": "hold",
+    "current": 0,
+    "desired": 0,
+    "healthy": 0,
+    "in_cooldown": true,
+    "reason": "COOLDOWN: 5.4s remaining (blocked scale_up 0->1)",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788171560.4236972,
+    "action": "hold",
+    "current": 0,
+    "desired": 0,
+    "healthy": 0,
+    "in_cooldown": true,
+    "reason": "COOLDOWN: 18.6s remaining (blocked scale_up 0->1)",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788171547.237163,
+    "action": "hold",
+    "current": 0,
+    "desired": 0,
+    "healthy": 0,
+    "in_cooldown": true,
+    "reason": "COOLDOWN: 31.8s remaining (blocked scale_up 0->1)",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788171534.0600584,
+    "action": "scale_up",
+    "current": 0,
+    "desired": 1,
+    "healthy": 0,
+    "in_cooldown": false,
+    "reason": "SCALE_UP: replicas 0 < min 1",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788171520.8296938,
+    "action": "hold",
+    "current": 0,
+    "desired": 0,
+    "healthy": 0,
+    "in_cooldown": true,
+    "reason": "COOLDOWN: 5.5s remaining (blocked scale_up 0->1)",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788171507.6721442,
+    "action": "hold",
+    "current": 0,
+    "desired": 0,
+    "healthy": 0,
+    "in_cooldown": true,
+    "reason": "COOLDOWN: 18.7s remaining (blocked scale_up 0->1)",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788171494.495604,
+    "action": "hold",
+    "current": 0,
+    "desired": 0,
+    "healthy": 0,
+    "in_cooldown": true,
+    "reason": "COOLDOWN: 31.8s remaining (blocked scale_up 0->1)",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788171481.332628,
+    "action": "scale_up",
+    "current": 0,
+    "desired": 1,
+    "healthy": 0,
+    "in_cooldown": false,
+    "reason": "SCALE_UP: replicas 0 < min 1",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788171468.151549,
+    "action": "hold",
+    "current": 0,
+    "desired": 0,
+    "healthy": 0,
+    "in_cooldown": true,
+    "reason": "COOLDOWN: 5.7s remaining (blocked scale_up 0->1)",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788171455.0311136,
+    "action": "hold",
+    "current": 0,
+    "desired": 0,
+    "healthy": 0,
+    "in_cooldown": true,
+    "reason": "COOLDOWN: 18.8s remaining (blocked scale_up 0->1)",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788171441.9323528,
+    "action": "hold",
+    "current": 0,
+    "desired": 0,
+    "healthy": 0,
+    "in_cooldown": true,
+    "reason": "COOLDOWN: 31.9s remaining (blocked scale_up 0->1)",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788171428.834765,
+    "action": "scale_up",
+    "current": 0,
+    "desired": 1,
+    "healthy": 0,
+    "in_cooldown": false,
+    "reason": "SCALE_UP: replicas 0 < min 1",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788171415.6997948,
+    "action": "hold",
+    "current": 0,
+    "desired": 0,
+    "healthy": 0,
+    "in_cooldown": true,
+    "reason": "COOLDOWN: 5.7s remaining (blocked scale_up 0->1)",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788171402.6502702,
+    "action": "hold",
+    "current": 0,
+    "desired": 0,
+    "healthy": 0,
+    "in_cooldown": true,
+    "reason": "COOLDOWN: 18.8s remaining (blocked scale_up 0->1)",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788171389.5550773,
+    "action": "hold",
+    "current": 0,
+    "desired": 0,
+    "healthy": 0,
+    "in_cooldown": true,
+    "reason": "COOLDOWN: 31.9s remaining (blocked scale_up 0->1)",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788171376.418062,
+    "action": "scale_up",
+    "current": 0,
+    "desired": 1,
+    "healthy": 0,
+    "in_cooldown": false,
+    "reason": "SCALE_UP: replicas 0 < min 1",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788171363.3162725,
+    "action": "hold",
+    "current": 0,
+    "desired": 0,
+    "healthy": 0,
+    "in_cooldown": true,
+    "reason": "COOLDOWN: 5.6s remaining (blocked scale_up 0->1)",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788171350.1834683,
+    "action": "hold",
+    "current": 0,
+    "desired": 0,
+    "healthy": 0,
+    "in_cooldown": true,
+    "reason": "COOLDOWN: 18.8s remaining (blocked scale_up 0->1)",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788171337.0698998,
+    "action": "hold",
+    "current": 0,
+    "desired": 0,
+    "healthy": 0,
+    "in_cooldown": true,
+    "reason": "COOLDOWN: 31.9s remaining (blocked scale_up 0->1)",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788171323.9336302,
+    "action": "scale_up",
+    "current": 0,
+    "desired": 1,
+    "healthy": 0,
+    "in_cooldown": false,
+    "reason": "SCALE_UP: replicas 0 < min 1",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788171310.828114,
+    "action": "hold",
+    "current": 0,
+    "desired": 0,
+    "healthy": 0,
+    "in_cooldown": true,
+    "reason": "COOLDOWN: 5.7s remaining (blocked scale_up 0->1)",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788171297.7565536,
+    "action": "hold",
+    "current": 0,
+    "desired": 0,
+    "healthy": 0,
+    "in_cooldown": true,
+    "reason": "COOLDOWN: 18.7s remaining (blocked scale_up 0->1)",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788171284.646513,
+    "action": "hold",
+    "current": 0,
+    "desired": 0,
+    "healthy": 0,
+    "in_cooldown": true,
+    "reason": "COOLDOWN: 31.8s remaining (blocked scale_up 0->1)",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788171271.4814224,
+    "action": "scale_up",
+    "current": 0,
+    "desired": 1,
+    "healthy": 0,
+    "in_cooldown": false,
+    "reason": "SCALE_UP: replicas 0 < min 1",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788171258.3153605,
+    "action": "hold",
+    "current": 0,
+    "desired": 0,
+    "healthy": 0,
+    "in_cooldown": true,
+    "reason": "COOLDOWN: 5.4s remaining (blocked scale_up 0->1)",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788171245.169739,
+    "action": "hold",
+    "current": 0,
+    "desired": 0,
+    "healthy": 0,
+    "in_cooldown": true,
+    "reason": "COOLDOWN: 18.6s remaining (blocked scale_up 0->1)",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788171231.9547617,
+    "action": "hold",
+    "current": 0,
+    "desired": 0,
+    "healthy": 0,
+    "in_cooldown": true,
+    "reason": "COOLDOWN: 31.8s remaining (blocked scale_up 0->1)",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788171218.7382536,
+    "action": "scale_up",
+    "current": 0,
+    "desired": 1,
+    "healthy": 0,
+    "in_cooldown": false,
+    "reason": "SCALE_UP: replicas 0 < min 1",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788171205.1111844,
+    "action": "hold",
+    "current": 0,
+    "desired": 0,
+    "healthy": 0,
+    "in_cooldown": true,
+    "reason": "COOLDOWN: 5.4s remaining (blocked scale_up 0->1)",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788171191.8713357,
+    "action": "hold",
+    "current": 0,
+    "desired": 0,
+    "healthy": 0,
+    "in_cooldown": true,
+    "reason": "COOLDOWN: 18.6s remaining (blocked scale_up 0->1)",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788171178.7693763,
+    "action": "hold",
+    "current": 0,
+    "desired": 0,
+    "healthy": 0,
+    "in_cooldown": true,
+    "reason": "COOLDOWN: 31.7s remaining (blocked scale_up 0->1)",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788171165.5061164,
+    "action": "scale_up",
+    "current": 0,
+    "desired": 1,
+    "healthy": 0,
+    "in_cooldown": false,
+    "reason": "SCALE_UP: replicas 0 < min 1",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788171152.3173013,
+    "action": "hold",
+    "current": 0,
+    "desired": 0,
+    "healthy": 0,
+    "in_cooldown": true,
+    "reason": "COOLDOWN: 5.7s remaining (blocked scale_up 0->1)",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788171139.1657019,
+    "action": "hold",
+    "current": 0,
+    "desired": 0,
+    "healthy": 0,
+    "in_cooldown": true,
+    "reason": "COOLDOWN: 18.8s remaining (blocked scale_up 0->1)",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788171126.0283532,
+    "action": "hold",
+    "current": 0,
+    "desired": 0,
+    "healthy": 0,
+    "in_cooldown": true,
+    "reason": "COOLDOWN: 32.0s remaining (blocked scale_up 0->1)",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788171112.9799263,
+    "action": "scale_up",
+    "current": 0,
+    "desired": 1,
+    "healthy": 0,
+    "in_cooldown": false,
+    "reason": "SCALE_UP: replicas 0 < min 1",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788171099.8161354,
+    "action": "hold",
+    "current": 0,
+    "desired": 0,
+    "healthy": 0,
+    "in_cooldown": true,
+    "reason": "COOLDOWN: 5.6s remaining (blocked scale_up 0->1)",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788171086.616293,
+    "action": "hold",
+    "current": 0,
+    "desired": 0,
+    "healthy": 0,
+    "in_cooldown": true,
+    "reason": "COOLDOWN: 18.8s remaining (blocked scale_up 0->1)",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788171073.5449479,
+    "action": "hold",
+    "current": 0,
+    "desired": 0,
+    "healthy": 0,
+    "in_cooldown": true,
+    "reason": "COOLDOWN: 31.9s remaining (blocked scale_up 0->1)",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788171060.4366431,
+    "action": "scale_up",
+    "current": 0,
+    "desired": 1,
+    "healthy": 0,
+    "in_cooldown": false,
+    "reason": "SCALE_UP: replicas 0 < min 1",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788171047.3133826,
+    "action": "hold",
+    "current": 0,
+    "desired": 0,
+    "healthy": 0,
+    "in_cooldown": true,
+    "reason": "COOLDOWN: 5.5s remaining (blocked scale_up 0->1)",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788171034.1654387,
+    "action": "hold",
+    "current": 0,
+    "desired": 0,
+    "healthy": 0,
+    "in_cooldown": true,
+    "reason": "COOLDOWN: 18.7s remaining (blocked scale_up 0->1)",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788171020.9901927,
+    "action": "hold",
+    "current": 0,
+    "desired": 0,
+    "healthy": 0,
+    "in_cooldown": true,
+    "reason": "COOLDOWN: 31.9s remaining (blocked scale_up 0->1)",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788171007.8614748,
+    "action": "scale_up",
+    "current": 0,
+    "desired": 1,
+    "healthy": 0,
+    "in_cooldown": false,
+    "reason": "SCALE_UP: replicas 0 < min 1",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788170994.751245,
+    "action": "hold",
+    "current": 0,
+    "desired": 0,
+    "healthy": 0,
+    "in_cooldown": true,
+    "reason": "COOLDOWN: 5.5s remaining (blocked scale_up 0->1)",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788170981.6216779,
+    "action": "hold",
+    "current": 0,
+    "desired": 0,
+    "healthy": 0,
+    "in_cooldown": true,
+    "reason": "COOLDOWN: 18.7s remaining (blocked scale_up 0->1)",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788170968.4603357,
+    "action": "hold",
+    "current": 0,
+    "desired": 0,
+    "healthy": 0,
+    "in_cooldown": true,
+    "reason": "COOLDOWN: 31.8s remaining (blocked scale_up 0->1)",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788170955.27981,
+    "action": "scale_up",
+    "current": 0,
+    "desired": 1,
+    "healthy": 0,
+    "in_cooldown": false,
+    "reason": "SCALE_UP: replicas 0 < min 1",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788170942.1992974,
+    "action": "hold",
+    "current": 0,
+    "desired": 0,
+    "healthy": 0,
+    "in_cooldown": true,
+    "reason": "COOLDOWN: 5.5s remaining (blocked scale_up 0->1)",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788170929.0671666,
+    "action": "hold",
+    "current": 0,
+    "desired": 0,
+    "healthy": 0,
+    "in_cooldown": true,
+    "reason": "COOLDOWN: 18.7s remaining (blocked scale_up 0->1)",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788170915.9254541,
+    "action": "hold",
+    "current": 0,
+    "desired": 0,
+    "healthy": 0,
+    "in_cooldown": true,
+    "reason": "COOLDOWN: 31.8s remaining (blocked scale_up 0->1)",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788170902.7399976,
+    "action": "scale_up",
+    "current": 0,
+    "desired": 1,
+    "healthy": 0,
+    "in_cooldown": false,
+    "reason": "SCALE_UP: replicas 0 < min 1",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788170889.5181513,
+    "action": "hold",
+    "current": 0,
+    "desired": 0,
+    "healthy": 0,
+    "in_cooldown": true,
+    "reason": "COOLDOWN: 5.7s remaining (blocked scale_up 0->1)",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788170876.461593,
+    "action": "hold",
+    "current": 0,
+    "desired": 0,
+    "healthy": 0,
+    "in_cooldown": true,
+    "reason": "COOLDOWN: 18.7s remaining (blocked scale_up 0->1)",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788170863.3839443,
+    "action": "hold",
+    "current": 0,
+    "desired": 0,
+    "healthy": 0,
+    "in_cooldown": true,
+    "reason": "COOLDOWN: 31.8s remaining (blocked scale_up 0->1)",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788170850.1978114,
+    "action": "scale_up",
+    "current": 0,
+    "desired": 1,
+    "healthy": 0,
+    "in_cooldown": false,
+    "reason": "SCALE_UP: replicas 0 < min 1",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788170837.1263673,
+    "action": "hold",
+    "current": 0,
+    "desired": 0,
+    "healthy": 0,
+    "in_cooldown": true,
+    "reason": "COOLDOWN: 5.6s remaining (blocked scale_up 0->1)",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788170824.0071595,
+    "action": "hold",
+    "current": 0,
+    "desired": 0,
+    "healthy": 0,
+    "in_cooldown": true,
+    "reason": "COOLDOWN: 18.7s remaining (blocked scale_up 0->1)",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788170810.8095093,
+    "action": "hold",
+    "current": 0,
+    "desired": 0,
+    "healthy": 0,
+    "in_cooldown": true,
+    "reason": "COOLDOWN: 31.9s remaining (blocked scale_up 0->1)",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788170797.6854582,
+    "action": "scale_up",
+    "current": 0,
+    "desired": 1,
+    "healthy": 0,
+    "in_cooldown": false,
+    "reason": "SCALE_UP: replicas 0 < min 1",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788170784.5964522,
+    "action": "hold",
+    "current": 0,
+    "desired": 0,
+    "healthy": 0,
+    "in_cooldown": true,
+    "reason": "COOLDOWN: 5.6s remaining (blocked scale_up 0->1)",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788170771.5307333,
+    "action": "hold",
+    "current": 0,
+    "desired": 0,
+    "healthy": 0,
+    "in_cooldown": true,
+    "reason": "COOLDOWN: 18.7s remaining (blocked scale_up 0->1)",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788170758.3733165,
+    "action": "hold",
+    "current": 0,
+    "desired": 0,
+    "healthy": 0,
+    "in_cooldown": true,
+    "reason": "COOLDOWN: 31.8s remaining (blocked scale_up 0->1)",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788170745.2197015,
+    "action": "scale_up",
+    "current": 0,
+    "desired": 1,
+    "healthy": 0,
+    "in_cooldown": false,
+    "reason": "SCALE_UP: replicas 0 < min 1",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788170731.9760242,
+    "action": "hold",
+    "current": 0,
+    "desired": 0,
+    "healthy": 0,
+    "in_cooldown": true,
+    "reason": "COOLDOWN: 5.6s remaining (blocked scale_up 0->1)",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788170718.8383756,
+    "action": "hold",
+    "current": 0,
+    "desired": 0,
+    "healthy": 0,
+    "in_cooldown": true,
+    "reason": "COOLDOWN: 18.7s remaining (blocked scale_up 0->1)",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788170705.6433349,
+    "action": "hold",
+    "current": 0,
+    "desired": 0,
+    "healthy": 0,
+    "in_cooldown": true,
+    "reason": "COOLDOWN: 31.9s remaining (blocked scale_up 0->1)",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788170692.5285294,
+    "action": "scale_up",
+    "current": 0,
+    "desired": 1,
+    "healthy": 0,
+    "in_cooldown": false,
+    "reason": "SCALE_UP: replicas 0 < min 1",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788170679.4091783,
+    "action": "hold",
+    "current": 0,
+    "desired": 0,
+    "healthy": 0,
+    "in_cooldown": true,
+    "reason": "COOLDOWN: 5.6s remaining (blocked scale_up 0->1)",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788170666.2564754,
+    "action": "hold",
+    "current": 0,
+    "desired": 0,
+    "healthy": 0,
+    "in_cooldown": true,
+    "reason": "COOLDOWN: 18.8s remaining (blocked scale_up 0->1)",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788170653.150763,
+    "action": "hold",
+    "current": 0,
+    "desired": 0,
+    "healthy": 0,
+    "in_cooldown": true,
+    "reason": "COOLDOWN: 31.9s remaining (blocked scale_up 0->1)",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788170640.016091,
+    "action": "scale_up",
+    "current": 0,
+    "desired": 1,
+    "healthy": 0,
+    "in_cooldown": false,
+    "reason": "SCALE_UP: replicas 0 < min 1",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788170626.7967403,
+    "action": "hold",
+    "current": 0,
+    "desired": 0,
+    "healthy": 0,
+    "in_cooldown": true,
+    "reason": "COOLDOWN: 5.6s remaining (blocked scale_up 0->1)",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788170613.6531503,
+    "action": "hold",
+    "current": 0,
+    "desired": 0,
+    "healthy": 0,
+    "in_cooldown": true,
+    "reason": "COOLDOWN: 18.7s remaining (blocked scale_up 0->1)",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788170600.5913575,
+    "action": "hold",
+    "current": 0,
+    "desired": 0,
+    "healthy": 0,
+    "in_cooldown": true,
+    "reason": "COOLDOWN: 31.8s remaining (blocked scale_up 0->1)",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788170587.3712745,
+    "action": "scale_up",
+    "current": 0,
+    "desired": 1,
+    "healthy": 0,
+    "in_cooldown": false,
+    "reason": "SCALE_UP: replicas 0 < min 1",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788170574.2537699,
+    "action": "hold",
+    "current": 0,
+    "desired": 0,
+    "healthy": 0,
+    "in_cooldown": true,
+    "reason": "COOLDOWN: 5.5s remaining (blocked scale_up 0->1)",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788170561.172386,
+    "action": "hold",
+    "current": 0,
+    "desired": 0,
+    "healthy": 0,
+    "in_cooldown": true,
+    "reason": "COOLDOWN: 18.6s remaining (blocked scale_up 0->1)",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788170547.925788,
+    "action": "hold",
+    "current": 0,
+    "desired": 0,
+    "healthy": 0,
+    "in_cooldown": true,
+    "reason": "COOLDOWN: 31.9s remaining (blocked scale_up 0->1)",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788170534.7866588,
+    "action": "scale_up",
+    "current": 0,
+    "desired": 1,
+    "healthy": 0,
+    "in_cooldown": false,
+    "reason": "SCALE_UP: replicas 0 < min 1",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788170521.6628203,
+    "action": "hold",
+    "current": 0,
+    "desired": 0,
+    "healthy": 0,
+    "in_cooldown": true,
+    "reason": "COOLDOWN: 5.6s remaining (blocked scale_up 0->1)",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788170508.48367,
+    "action": "hold",
+    "current": 0,
+    "desired": 0,
+    "healthy": 0,
+    "in_cooldown": true,
+    "reason": "COOLDOWN: 18.7s remaining (blocked scale_up 0->1)",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788170495.3198092,
+    "action": "hold",
+    "current": 0,
+    "desired": 0,
+    "healthy": 0,
+    "in_cooldown": true,
+    "reason": "COOLDOWN: 31.9s remaining (blocked scale_up 0->1)",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788170482.2163775,
+    "action": "scale_up",
+    "current": 0,
+    "desired": 1,
+    "healthy": 0,
+    "in_cooldown": false,
+    "reason": "SCALE_UP: replicas 0 < min 1",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788170469.0980828,
+    "action": "hold",
+    "current": 0,
+    "desired": 0,
+    "healthy": 0,
+    "in_cooldown": true,
+    "reason": "COOLDOWN: 5.6s remaining (blocked scale_up 0->1)",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788170455.972067,
+    "action": "hold",
+    "current": 0,
+    "desired": 0,
+    "healthy": 0,
+    "in_cooldown": true,
+    "reason": "COOLDOWN: 18.7s remaining (blocked scale_up 0->1)",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788170442.859733,
+    "action": "hold",
+    "current": 0,
+    "desired": 0,
+    "healthy": 0,
+    "in_cooldown": true,
+    "reason": "COOLDOWN: 31.8s remaining (blocked scale_up 0->1)",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788170429.6509132,
+    "action": "scale_up",
+    "current": 0,
+    "desired": 1,
+    "healthy": 0,
+    "in_cooldown": false,
+    "reason": "SCALE_UP: replicas 0 < min 1",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788170416.5650816,
+    "action": "hold",
+    "current": 0,
+    "desired": 0,
+    "healthy": 0,
+    "in_cooldown": true,
+    "reason": "COOLDOWN: 5.6s remaining (blocked scale_up 0->1)",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  },
+  {
+    "timestamp": 1788170403.4063637,
+    "action": "hold",
+    "current": 0,
+    "desired": 0,
+    "healthy": 0,
+    "in_cooldown": true,
+    "reason": "COOLDOWN: 18.8s remaining (blocked scale_up 0->1)",
+    "signals": {
+      "avg_cpu": 0.0,
+      "avg_memory": 0.0,
+      "avg_latency_ms": 0.0,
+      "request_rate_total": 0.0,
+      "request_rate_per_instance": 0.0,
+      "healthy_instances": 0,
+      "observed_instances": 0,
+      "active_instance_count": 0
+    },
+    "discovered_urls": []
+  }
+]

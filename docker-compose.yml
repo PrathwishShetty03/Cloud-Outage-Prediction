@@ -1,0 +1,81 @@
+services:
+  server_a:
+    build:
+      context: ./server_app
+      dockerfile: Dockerfile
+    container_name: server_a_primary
+    environment:
+      - SERVER_ID=SERVER_A
+      - SERVER_PORT=5001
+      - IS_PRIMARY=true
+      - SERVER_ROLE=PRIMARY
+    volumes:
+      - ./server_app:/app
+    ports:
+      - "5001:5001"
+    restart: always
+
+  server_b:
+    build:
+      context: ./server_app
+      dockerfile: Dockerfile
+    container_name: server_b_backup
+    environment:
+      - SERVER_ID=SERVER_B
+      - SERVER_PORT=5002
+      - IS_PRIMARY=false
+      - SERVER_ROLE=BACKUP
+    volumes:
+      - ./server_app:/app
+    ports:
+      - "5002:5002"
+    restart: always
+
+  server_c:
+    build:
+      context: ./server_app
+      dockerfile: Dockerfile
+    container_name: server_c_emergency
+    environment:
+      - SERVER_ID=SERVER_C
+      - SERVER_PORT=5003
+      - IS_PRIMARY=false
+      - SERVER_ROLE=EMERGENCY
+    volumes:
+      - ./server_app:/app
+    ports:
+      - "5003:5003"
+    restart: always
+
+  haproxy:
+    image: haproxy:2.8-alpine
+    container_name: haproxy_lb
+    volumes:
+      - ./haproxy/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro
+    ports:
+      - "80:80"
+      - "8404:8404"
+    depends_on:
+      - server_a
+      - server_b
+      - server_c
+    restart: always
+
+  dashboard:
+    build:
+      context: .
+      dockerfile: dashboard/Dockerfile
+    container_name: streamlit_command_center
+    command: streamlit run dashboard/app.py --server.port=8501 --server.address=0.0.0.0
+    environment:
+      - SERVER_A_URL=http://server_a:5001
+      - SERVER_B_URL=http://server_b:5002
+      - SERVER_C_URL=http://server_c:5003
+      - HAPROXY_URL=http://haproxy:80
+    volumes:
+      - .:/app
+    ports:
+      - "8501:8501"
+    depends_on:
+      - haproxy
+    restart: always

@@ -1,0 +1,6 @@
+timestamp,event_type,active_server,server_a_requests,server_b_requests,server_c_requests,response_header_x_served_by,details
+2026-08-12 17:15:11,DEMO_START,SERVER_A,0,0,0,NONE,Initial system telemetry check - All servers standing by
+2026-08-12 17:32:04,NORMAL_TRAFFIC,SERVER_A,500,0,0,SERVER_A,Server A completed 500 total requests successfully
+2026-08-12 17:32:09,FAULT_INJECTION,SERVER_A,500,0,0,SERVER_A,Injected 5.5s Latency + 100% CPU stress on Server A
+2026-08-12 17:32:13,HEALTH_DEGRADATION,SERVER_A,500,0,0,SERVER_A,"Server A health check failed (Status: UNHEALTHY, HTTP 503)"
+2026-08-12 17:33:57,FAILOVER_COMPLETED,SERVER_B,500,50,0,SERVER_B,"HAProxy routed new traffic to Server B (Server A frozen at 500, Server B at 50)"

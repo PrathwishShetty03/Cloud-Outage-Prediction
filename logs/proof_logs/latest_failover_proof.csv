@@ -1,0 +1,10 @@
+timestamp,event_type,active_server,server_a_requests,server_b_requests,server_c_requests,outage_probability,response_header_x_served_by,failover_type,details
+2026-11-04 07:45:16,DEMO_START,SERVER_A,0,0,0,0.12,NONE,NORMAL,Baseline system check - Server A Healthy
+2026-11-04 07:45:17,NORMAL_OPERATIONS,SERVER_A,197,0,0,0.15,SERVER_C,NORMAL,Server A completed 197 requests through HAProxy
+2026-11-04 07:45:19,STAGE_1_LOAD,SERVER_A,197,0,0,0.35,SERVER_A,NORMAL,"Workload increasing: CPU ~45%, Latency ~300ms (Status: UNHEALTHY)"
+2026-11-04 07:45:21,STAGE_2_LOAD,SERVER_A,197,0,0,0.58,SERVER_A,NORMAL,"High Workload: CPU ~70%, Latency ~1500ms (Status: UNHEALTHY)"
+2026-11-04 07:45:25,STAGE_3_NEAR_RISK,SERVER_A,197,0,0,0.78,SERVER_A,NORMAL,"Critical Workload: CPU ~88%, Latency ~3200ms - Risk approaching threshold (Status: UNHEALTHY)"
+2026-11-04 07:45:28,PREDICTIVE_FAILOVER,SERVER_B,197,0,0,0.875,SERVER_B,PREDICTIVE,"Predictive Failover Triggered! (Server A risk 87.5% >= 80.0%, Server A state: UNHEALTHY)"
+2026-11-04 07:45:29,PREVENTION_VERIFIED,SERVER_B,197,71,0,0.875,SERVER_C,PREDICTIVE,"New traffic routed to Server B (Server A frozen at 197, Server B climbing at 71)"
+2026-11-04 07:45:30,EMERGENCY_FAILOVER,SERVER_C,197,71,203,0.99,SERVER_C,EMERGENCY,"HAProxy routed emergency traffic to Server C (A=197, B=71, C=203)"
+2026-11-04 07:45:30,SYSTEM_RECOVERY,SERVER_A,197,71,203,0.15,SERVER_A,RECOVERY,Primary Server A recovered to 100% HEALTHY state

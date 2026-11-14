@@ -1,0 +1,15 @@
+{
+  "status": "RUNNING",
+  "service_name": "app",
+  "current_instances": 0,
+  "desired_instances": 0,
+  "healthy_instances": 0,
+  "in_cooldown": true,
+  "last_action": "hold",
+  "last_reason": "COOLDOWN: 5.5s remaining (blocked scale_up 0->1)",
+  "last_scale_timestamp": 1788171679.523625,
+  "total_scale_up_events": 193,
+  "total_scale_down_events": 0,
+  "total_evaluations": 765,
+  "last_eval_timestamp": 1788171719.017945
+}
