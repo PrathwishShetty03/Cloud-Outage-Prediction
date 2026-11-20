@@ -44,18 +44,23 @@ def health_checker():
                     server_status[srv_key]["consecutive_fails"] = 0
                 else:
                     server_status[srv_key]["consecutive_fails"] += 1
-                    if server_status[srv_key]["consecutive_fails"] >= 3:
+                    if server_status[srv_key]["consecutive_fails"] >= 2:
                         server_status[srv_key]["status"] = "DOWN"
                         server_status[srv_key]["health_code"] = r.status_code
             except Exception:
                 server_status[srv_key]["consecutive_fails"] += 1
-                if server_status[srv_key]["consecutive_fails"] >= 3:
+                if server_status[srv_key]["consecutive_fails"] >= 2:
                     server_status[srv_key]["status"] = "DOWN"
                     server_status[srv_key]["health_code"] = 503
 
         # Route evaluation logic with Predictive Failover override support
         if override_backend:
-            if override_backend == "SERVER_B" and server_status["server_b"]["status"] != "DOWN":
+            # If Server A has completed full recovery to UP, clear override to allow automatic failback
+            if override_backend == "SERVER_B" and server_status["server_a"]["status"] == "UP" and server_status["server_a"]["health_code"] == 200:
+                print("[HAPROXY FAILBACK] Server A health check passed (HTTP 200). Resetting override to restore Primary Server A.")
+                override_backend = None
+                active_backend = "SERVER_A"
+            elif override_backend == "SERVER_B" and server_status["server_b"]["status"] != "DOWN":
                 active_backend = "SERVER_B"
             elif override_backend == "SERVER_C" and server_status["server_c"]["status"] != "DOWN":
                 active_backend = "SERVER_C"

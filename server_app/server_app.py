@@ -31,6 +31,68 @@ else:
 # Determine default recovery duration based on SERVER_ID (Server A=20s, Server B=30s)
 DEFAULT_RECOVERY_SEC = 20.0 if SERVER_ID == "SERVER_A" else (30.0 if SERVER_ID == "SERVER_B" else 20.0)
 
+def get_recovery_stage_details(elapsed, total_dur):
+    """
+    Computes real-time recovery stages for autonomous self-healing:
+    Stage 1: Outage Detection & Triage (0% to 25% of duration)
+    Stage 2: Automated Root-Cause Diagnostics (25% to 50% of duration)
+    Stage 3: Microservice Service/Container Restart (50% to 75% of duration)
+    Stage 4: Self-Healing Health Verification & Warm-up (75% to 100% of duration)
+    """
+    total_dur = max(0.1, float(total_dur))
+    ratio = min(1.0, max(0.0, float(elapsed) / total_dur))
+    progress_pct = round(ratio * 100.0, 1)
+    rem_sec = round(max(0.0, total_dur - elapsed), 1)
+
+    if ratio < 0.25:
+        stage_key = "OUTAGE_DETECTION"
+        stage_idx = 1
+        stage_name = "Outage Detection & Isolation"
+        desc = "Outage signature confirmed. Isolating degraded node, draining lingering connections, and initializing diagnostic engine."
+        health_score = round(15.0 + (ratio / 0.25) * 15.0, 1)
+        cpu = round(max(20.0, 85.0 - (ratio / 0.25) * 20.0), 1)
+        mem = round(max(25.0, 80.0 - (ratio / 0.25) * 15.0), 1)
+    elif ratio < 0.50:
+        stage_key = "DIAGNOSTICS"
+        stage_idx = 2
+        stage_name = "Automated Root-Cause Diagnostics"
+        desc = "Auditing runtime state: scanning thread locks, inspecting memory heap leaks, resetting chaos buffers, and freeing resources."
+        r_sub = (ratio - 0.25) / 0.25
+        health_score = round(30.0 + r_sub * 25.0, 1)
+        cpu = round(max(18.0, 65.0 - r_sub * 25.0), 1)
+        mem = round(max(22.0, 65.0 - r_sub * 25.0), 1)
+    elif ratio < 0.75:
+        stage_key = "SERVICE_RESTART"
+        stage_idx = 3
+        stage_name = "Microservice Service Restart"
+        desc = "Restarting application service workers, reloading database connections, re-binding HTTP listeners, and re-initializing internal cache."
+        r_sub = (ratio - 0.50) / 0.25
+        health_score = round(55.0 + r_sub * 25.0, 1)
+        cpu = round(max(15.0, 40.0 - r_sub * 18.0), 1)
+        mem = round(max(18.0, 40.0 - r_sub * 15.0), 1)
+    else:
+        stage_key = "HEALTH_VERIFICATION"
+        stage_idx = 4
+        stage_name = "Health Verification & Pre-Warmup"
+        desc = "Running synthetic internal probes, verifying response latency SLAs, checking error budget, and preparing for traffic failback."
+        r_sub = (ratio - 0.75) / 0.25
+        health_score = round(80.0 + r_sub * 18.0, 1)
+        cpu = round(max(10.0, 22.0 - r_sub * 8.0), 1)
+        mem = round(max(15.0, 25.0 - r_sub * 8.0), 1)
+
+    return {
+        "stage": stage_key,
+        "stage_index": stage_idx,
+        "total_stages": 4,
+        "stage_name": stage_name,
+        "description": desc,
+        "progress_pct": progress_pct,
+        "remaining_sec": rem_sec,
+        "health_score": health_score,
+        "cpu": cpu,
+        "memory": mem
+    }
+
 # Monotonic Request & Dynamic Simulation State Variables
 simulation_state = {
     "cpu_active": False,
@@ -42,6 +104,7 @@ simulation_state = {
     "is_recovering": False,
     "recovery_start_time": 0.0,
     "recovery_duration_sec": DEFAULT_RECOVERY_SEC,
+    "recovery_stage": None,
     "total_requests": 0,      # requests actually served (not blocked by outage)
     "raw_hits": 0,            # every incoming hit incl. blocked ones (for error_rate math)
     "active_requests": 0,
@@ -159,12 +222,17 @@ def handle_simulated_delays_and_errors():
     if simulation_state["latency_seconds"] > 0:
         time.sleep(simulation_state["latency_seconds"])
 
-    # Outage check: if node is in outage, user request is rejected with HTTP 503
-    if simulation_state["is_outage"]:
+    # Outage check: if node is in outage or recovering, user request is rejected with HTTP 503
+    if simulation_state["is_outage"] or simulation_state["is_recovering"]:
         simulation_state["failed_requests"] += 1
         simulation_state["error_count"] += 1
         simulation_state["active_requests"] = max(0, simulation_state["active_requests"] - 1)
-        return jsonify({"error": "Simulated Outage Active", "server_id": SERVER_ID}), 503
+        err_msg = "Simulated Outage Active" if simulation_state["is_outage"] else "Server Undergoing Automated Self-Healing Recovery"
+        return jsonify({
+            "error": err_msg,
+            "server_id": SERVER_ID,
+            "status": "RECOVERING" if simulation_state["is_recovering"] else "OUTAGE"
+        }), 503
 
     # Error injection
     if simulation_state["error_rate"] > 0:
@@ -201,19 +269,21 @@ def health_check():
     now = time.time()
     if simulation_state.get("is_recovering", False):
         elapsed = now - simulation_state.get("recovery_start_time", 0.0)
-        dur = simulation_state.get("recovery_duration_sec", 10.5)
+        dur = simulation_state.get("recovery_duration_sec", DEFAULT_RECOVERY_SEC)
         if elapsed < dur:
-            rem_sec = round(max(0.5, dur - elapsed), 1)
-            health_score = round(min(65.0, 35.0 + (elapsed / dur) * 30.0), 1)
-            cpu = round(max(15.0, 78.0 - (elapsed / dur) * 60.0), 2)
-            mem = round(max(16.0, 80.0 - (elapsed / dur) * 64.0), 2)
-            PROM_HEALTH.labels(server_id=SERVER_ID).set(1)
+            stg = get_recovery_stage_details(elapsed, dur)
+            PROM_HEALTH.labels(server_id=SERVER_ID).set(0)
             return jsonify({
                 "status": "RECOVERING",
-                "description": "Current trying to recover...",
-                "message": f"Current trying to recover... ({rem_sec}s remaining)",
-                "recovery_remaining_sec": rem_sec,
-                "health_score": health_score,
+                "recovery_stage": stg["stage"],
+                "recovery_stage_index": stg["stage_index"],
+                "total_stages": stg["total_stages"],
+                "recovery_stage_name": stg["stage_name"],
+                "description": stg["description"],
+                "message": f"[{stg['stage_index']}/4] {stg['stage_name']} ({stg['remaining_sec']}s remaining)",
+                "recovery_progress_pct": stg["progress_pct"],
+                "recovery_remaining_sec": stg["remaining_sec"],
+                "health_score": stg["health_score"],
                 "server_name": SERVER_ID,
                 "server_id": SERVER_ID,
                 "role": SERVER_ROLE,
@@ -225,14 +295,16 @@ def health_check():
                 "failed_requests": simulation_state["failed_requests"],
                 "uptime": int(now - simulation_state["start_time"]),
                 "last_request_time": simulation_state["last_request_time"],
-                "cpu": cpu,
-                "memory": mem,
+                "cpu": stg["cpu"],
+                "memory": stg["memory"],
                 "disk": 1.6,
                 "latency": 0.0,
                 "error_rate": 0.0
-            }), 200
+            }), 503  # HTTP 503 ensures HAProxy / load balancer keeps Server A in DOWN state during recovery
         else:
             simulation_state["is_recovering"] = False
+            simulation_state["is_outage"] = False
+            simulation_state["recovery_stage"] = None
 
     cpu, mem, disk, lat_ms, err_rate = get_node_telemetry_metrics()
     health_score = calculate_dynamic_health_score(cpu, mem, disk, lat_ms, err_rate)
@@ -277,12 +349,9 @@ def get_metrics():
     now = time.time()
     if simulation_state.get("is_recovering", False):
         elapsed = now - simulation_state.get("recovery_start_time", 0.0)
-        dur = simulation_state.get("recovery_duration_sec", 10.5)
+        dur = simulation_state.get("recovery_duration_sec", DEFAULT_RECOVERY_SEC)
         if elapsed < dur:
-            rem_sec = round(max(0.5, dur - elapsed), 1)
-            health_score = round(min(65.0, 35.0 + (elapsed / dur) * 30.0), 1)
-            cpu = round(max(15.0, 78.0 - (elapsed / dur) * 60.0), 2)
-            mem = round(max(16.0, 80.0 - (elapsed / dur) * 64.0), 2)
+            stg = get_recovery_stage_details(elapsed, dur)
             net = psutil.net_io_counters()
             metrics_data = {
                 "server_name": SERVER_ID,
@@ -292,14 +361,19 @@ def get_metrics():
                 "port": SERVER_PORT,
                 "is_primary": IS_PRIMARY,
                 "status": "RECOVERING",
-                "description": "Current trying to recover...",
-                "message": f"Current trying to recover... ({rem_sec}s remaining)",
-                "recovery_remaining_sec": rem_sec,
-                "health_score": health_score,
-                "cpu_percent": cpu,
-                "cpu": cpu,
-                "memory_percent": mem,
-                "memory": mem,
+                "recovery_stage": stg["stage"],
+                "recovery_stage_index": stg["stage_index"],
+                "total_stages": stg["total_stages"],
+                "recovery_stage_name": stg["stage_name"],
+                "description": stg["description"],
+                "message": f"[{stg['stage_index']}/4] {stg['stage_name']} ({stg['remaining_sec']}s remaining)",
+                "recovery_progress_pct": stg["progress_pct"],
+                "recovery_remaining_sec": stg["remaining_sec"],
+                "health_score": stg["health_score"],
+                "cpu_percent": stg["cpu"],
+                "cpu": stg["cpu"],
+                "memory_percent": stg["memory"],
+                "memory": stg["memory"],
                 "disk_percent": 1.6,
                 "disk": 1.6,
                 "network_sent_mb": round(net.bytes_sent / (1024 * 1024), 2),
@@ -320,12 +394,19 @@ def get_metrics():
                     "latency_injected_sec": 0.0,
                     "error_rate_injected": 0.0,
                     "is_outage": False,
-                    "is_recovering": True
+                    "is_recovering": True,
+                    "recovery_stage": stg["stage"],
+                    "recovery_stage_name": stg["stage_name"],
+                    "recovery_stage_index": stg["stage_index"],
+                    "recovery_progress_pct": stg["progress_pct"],
+                    "recovery_remaining_sec": stg["remaining_sec"]
                 }
             }
             return jsonify(metrics_data)
         else:
             simulation_state["is_recovering"] = False
+            simulation_state["is_outage"] = False
+            simulation_state["recovery_stage"] = None
 
     cpu, mem, disk, lat_ms, err_rate = get_node_telemetry_metrics()
     net = psutil.net_io_counters()
@@ -892,23 +973,21 @@ def stress_error():
     simulation_state["error_rate"] = max(0.0, min(1.0, rate))
     return jsonify({"status": "OK", "error_rate": simulation_state["error_rate"], "server_id": SERVER_ID})
 
-@app.route("/simulate/outage", methods=["POST"])
-def simulate_outage():
-    simulation_state["is_outage"] = True
-    return jsonify({"status": "OUTAGE_TRIGGERED", "server_id": SERVER_ID, "port": SERVER_PORT})
-
-@app.route("/simulate/recover", methods=["POST"])
-def simulate_recover():
-    dur = 20.0 if SERVER_ID == "SERVER_A" else (30.0 if SERVER_ID == "SERVER_B" else 20.0)
+def _execute_node_recovery(dur=None):
+    if dur is None:
+        dur = 20.0 if SERVER_ID == "SERVER_A" else (30.0 if SERVER_ID == "SERVER_B" else 20.0)
     
     simulation_state["cpu_active"] = False
     simulation_state["ram_allocated"].clear()
     simulation_state["disk_allocated_mb"] = 0
     simulation_state["latency_seconds"] = 0.0
     simulation_state["error_rate"] = 0.0
+    simulation_state["error_count"] = 0
+    simulation_state["failed_requests"] = 0
+    simulation_state["raw_hits"] = simulation_state["total_requests"]
     simulation_state["is_outage"] = False
     
-    # Enable node-specific recovery transition phase (Server A=20s, Server B=30s)
+    # Enable node-specific recovery transition phase
     simulation_state["is_recovering"] = True
     simulation_state["recovery_start_time"] = time.time()
     simulation_state["recovery_duration_sec"] = dur
@@ -916,6 +995,11 @@ def simulate_recover():
     def finish_recovery():
         time.sleep(dur)
         simulation_state["is_recovering"] = False
+        simulation_state["is_outage"] = False
+        simulation_state["recovery_stage"] = None
+        simulation_state["error_count"] = 0
+        simulation_state["failed_requests"] = 0
+        simulation_state["raw_hits"] = simulation_state["total_requests"]
         print(f"[RECOVERY COMPLETE] {SERVER_ID} (Port {SERVER_PORT}) fully recovered to HEALTHY state after {dur}s.")
         
     t = threading.Thread(target=finish_recovery, daemon=True)
@@ -928,11 +1012,48 @@ def simulate_recover():
             os.remove(dummy_file)
         except Exception:
             pass
-            
+
+@app.route("/simulate/outage", methods=["POST"])
+def simulate_outage():
+    data = request.get_json(silent=True) or {}
+    auto_recover = data.get("auto_recover", True)
+    delay_sec = float(data.get("delay", 2.0))
+    dur = float(data.get("duration", 20.0 if SERVER_ID == "SERVER_A" else 30.0))
+    
+    simulation_state["is_outage"] = True
+    simulation_state["is_recovering"] = False
+    
+    if auto_recover:
+        def start_delayed():
+            time.sleep(delay_sec)
+            # Only start if still in outage and not manually recovered
+            if simulation_state["is_outage"] and not simulation_state["is_recovering"]:
+                print(f"[AUTO-RECOVERY] Outage confirmed on {SERVER_ID}. Beginning staged automatic recovery ({dur}s)...")
+                _execute_node_recovery(dur)
+        t = threading.Thread(target=start_delayed, daemon=True)
+        t.start()
+        
+    return jsonify({
+        "status": "OUTAGE_TRIGGERED",
+        "server_id": SERVER_ID,
+        "port": SERVER_PORT,
+        "auto_recover": auto_recover,
+        "auto_recovery_starts_in_sec": delay_sec if auto_recover else 0,
+        "recovery_duration_sec": dur
+    })
+
+@app.route("/simulate/recover", methods=["POST"])
+def simulate_recover():
+    data = request.get_json(silent=True) or {}
+    dur = float(data.get("duration", 20.0 if SERVER_ID == "SERVER_A" else 30.0))
+    _execute_node_recovery(dur)
+    stg = get_recovery_stage_details(0.0, dur)
     return jsonify({
         "status": "RECOVERING",
-        "description": "Current trying to recover...",
-        "message": f"Current trying to recover... ({int(dur)}s remaining)",
+        "stage": stg["stage"],
+        "stage_name": stg["stage_name"],
+        "description": stg["description"],
+        "message": f"Staged recovery active for {SERVER_ID} ({int(dur)}s remaining)",
         "recovery_duration_sec": dur,
         "server_id": SERVER_ID,
         "port": SERVER_PORT

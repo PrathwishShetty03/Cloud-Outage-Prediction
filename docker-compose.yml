@@ -79,3 +79,22 @@ services:
     depends_on:
       - haproxy
     restart: always
+
+  traffic_demo:
+    build:
+      context: .
+      dockerfile: dashboard/Dockerfile
+    container_name: traffic_demo_console
+    command: python traffic-demo/app.py
+    environment:
+      - SERVER_A_URL=http://server_a:5001
+      - SERVER_B_URL=http://server_b:5002
+      - SERVER_C_URL=http://server_c:5003
+      - HAPROXY_URL=http://haproxy:80
+    volumes:
+      - .:/app
+    ports:
+      - "5050:5050"
+    depends_on:
+      - haproxy
+    restart: always

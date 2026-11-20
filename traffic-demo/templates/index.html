@@ -154,9 +154,15 @@
 
         .topology-grid {
             display: grid;
-            grid-template-columns: 240px 1fr 280px 280px;
-            gap: 20px;
-            align-items: center;
+            grid-template-columns: 200px 220px repeat(3, 1fr);
+            gap: 16px;
+            align-items: stretch;
+        }
+
+        @media (max-width: 1200px) {
+            .topology-grid {
+                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            }
         }
 
         .topology-node {
@@ -176,6 +182,11 @@
         .topology-node.active-backup {
             border-color: var(--accent-green);
             box-shadow: 0 0 16px rgba(16, 185, 129, 0.25);
+        }
+
+        .topology-node.active-emergency {
+            border-color: #A855F7;
+            box-shadow: 0 0 16px rgba(168, 85, 247, 0.25);
         }
 
         .topology-node.down-node {
@@ -266,6 +277,46 @@
         .node-metrics-mini strong {
             color: var(--text-main);
             font-family: var(--font-mono);
+        }
+
+        /* 4-Stage Autonomous Recovery Pipeline */
+        .recovery-step {
+            background: #0E1626;
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            padding: 10px 14px;
+            transition: all 0.3s ease;
+        }
+        .recovery-step.step-active {
+            border-color: #F59E0B;
+            background: rgba(245, 158, 11, 0.12);
+            box-shadow: 0 0 12px rgba(245, 158, 11, 0.25);
+        }
+        .recovery-step.step-completed {
+            border-color: #10B981;
+            background: rgba(16, 185, 129, 0.08);
+        }
+        .recovery-step .step-num {
+            font-size: 0.68rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            letter-spacing: 0.05em;
+        }
+        .recovery-step.step-active .step-num {
+            color: #FCD34D;
+        }
+        .recovery-step.step-completed .step-num {
+            color: #34D399;
+        }
+        .recovery-step .step-title {
+            font-size: 0.82rem;
+            font-weight: 700;
+            margin-top: 2px;
+        }
+        .recovery-step .step-desc {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            margin-top: 2px;
         }
 
         /* SVG Flow Visualizer */
@@ -463,6 +514,12 @@
             border: 1px solid rgba(16, 185, 129, 0.35);
         }
 
+        .pill-server-c {
+            background: rgba(168, 85, 247, 0.15);
+            color: #C084FC;
+            border: 1px solid rgba(168, 85, 247, 0.35);
+        }
+
         .pill-error {
             background: rgba(239, 68, 68, 0.15);
             color: #F87171;
@@ -573,7 +630,7 @@
         <!-- Dynamic Failover Alert Banner -->
         <div id="failover-banner" class="failover-banner">
             <div style="font-weight: 700; font-size: 0.98rem; display: flex; align-items: center; gap: 8px;">
-                <span>⚡ HIGH AVAILABILITY FAILOVER ACTIVE</span>
+                <span id="failover-headline">⚡ HIGH AVAILABILITY FAILOVER ACTIVE</span>
                 <span id="failover-time-badge" style="font-family: var(--font-mono); font-size: 0.8rem; background: rgba(0,0,0,0.3); padding: 2px 8px; border-radius: 4px;"></span>
             </div>
             <div id="failover-message" style="margin-top: 4px; font-size: 0.88rem;">
@@ -581,11 +638,50 @@
             </div>
         </div>
 
-        <!-- Auto-Recovery Countdown Banner -->
-        <div id="auto-recovery-banner" style="display:none; background: linear-gradient(90deg, rgba(245,158,11,0.18) 0%, rgba(16,185,129,0.1) 100%); border: 1px solid rgba(245,158,11,0.4); border-left: 6px solid #F59E0B; border-radius: 10px; padding: 12px 20px; margin-bottom: 22px; font-size: 0.9rem; color: #FCD34D;">
-            <strong>⏱ AUTO-RECOVERY PENDING</strong> —
-            <span id="auto-recovery-countdown">Auto-recovery in 15s...</span>
-            Server B continues handling all traffic until Server A is fully recovered.
+        <!-- 4-Stage Autonomous Recovery Pipeline Card -->
+        <div id="recovery-pipeline-card" style="display:none; background: #0E1626; border: 1px solid rgba(245,158,11,0.5); border-radius: 12px; padding: 18px 24px; margin-bottom: 22px; box-shadow: 0 4px 20px rgba(245,158,11,0.15);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+                <div style="font-weight: 800; font-size: 0.95rem; color: #FCD34D; display: flex; align-items: center; gap: 8px;">
+                    <span class="pulse-indicator" style="background-color: #F59E0B; box-shadow: 0 0 10px #F59E0B;"></span>
+                    <span>AUTONOMOUS SELF-HEALING RECOVERY (SERVER A)</span>
+                    <span id="pipeline-remaining-badge" style="font-family: var(--font-mono); font-size: 0.8rem; background: rgba(245,158,11,0.25); color: #FCD34D; padding: 3px 10px; border-radius: 6px; border: 1px solid rgba(245,158,11,0.4);">20.0s remaining</span>
+                </div>
+                <div style="font-size: 0.82rem; color: #94A3B8;">
+                    Active Ingress: <strong style="color: #34D399; font-family: var(--font-mono);">Server B (:5002) Serving 100% Traffic</strong>
+                </div>
+            </div>
+
+            <!-- Stepper Grid (4 Stages) -->
+            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 14px;">
+                <div id="step-1" class="recovery-step">
+                    <div class="step-num">STAGE 1</div>
+                    <div class="step-title">Outage Detection</div>
+                    <div class="step-desc">Isolate node & drain sessions</div>
+                </div>
+                <div id="step-2" class="recovery-step">
+                    <div class="step-num">STAGE 2</div>
+                    <div class="step-title">Root-Cause Diagnostics</div>
+                    <div class="step-desc">Audit heap & memory leaks</div>
+                </div>
+                <div id="step-3" class="recovery-step">
+                    <div class="step-num">STAGE 3</div>
+                    <div class="step-title">Service Restart</div>
+                    <div class="step-desc">Restart runtime & reload state</div>
+                </div>
+                <div id="step-4" class="recovery-step">
+                    <div class="step-num">STAGE 4</div>
+                    <div class="step-title">Health Verification</div>
+                    <div class="step-desc">Latency SLAs & probe check</div>
+                </div>
+            </div>
+
+            <!-- Progress Bar -->
+            <div style="background: #1E293B; height: 8px; border-radius: 4px; overflow: hidden; margin-bottom: 10px;">
+                <div id="recovery-progress-bar" style="height: 100%; width: 0%; background: linear-gradient(90deg, #F59E0B, #10B981); transition: width 0.4s ease;"></div>
+            </div>
+            <div id="recovery-stage-detail" style="font-size: 0.82rem; color: #CBD5E1; font-family: var(--font-mono);">
+                Initializing self-healing sequence...
+            </div>
         </div>
 
         <!-- Infrastructure Topology Flowchart -->
@@ -660,6 +756,24 @@
                         <div><span>Memory %:</span> <strong id="lbl-mem-b">0%</strong></div>
                     </div>
                 </div>
+
+                <!-- Node 5: Server C (Emergency Standby) -->
+                <div class="topology-node" id="card-server-c">
+                    <div class="node-title">
+                        <span>Server C</span>
+                        <span class="node-port">:5003</span>
+                    </div>
+                    <div><span class="node-role-badge" style="border-left: 2px solid #A855F7; color: #C084FC;">EMERGENCY STANDBY</span></div>
+                    <div id="badge-status-c" class="node-status-badge badge-healthy">● HEALTHY</div>
+                    <div id="badge-ingress-c" class="node-status-badge badge-standby" style="margin-left: 4px;">STANDBY</div>
+
+                    <div class="node-metrics-mini">
+                        <div><span>Requests:</span> <strong id="lbl-reqs-c">0</strong></div>
+                        <div><span>Health:</span> <strong id="lbl-health-c">100%</strong></div>
+                        <div><span>CPU %:</span> <strong id="lbl-cpu-c">0%</strong></div>
+                        <div><span>Memory %:</span> <strong id="lbl-mem-c">0%</strong></div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -729,7 +843,7 @@
                     <span>Traffic & Failover Audit</span>
                 </div>
 
-                <div class="kpi-row" style="grid-template-columns: 1fr 1fr;">
+                <div class="kpi-row" style="grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 14px;">
                     <div class="kpi-box">
                         <div class="kpi-label">Total Requests</div>
                         <div class="kpi-value" id="kpi-total">0</div>
@@ -738,22 +852,30 @@
                         <div class="kpi-label">Successful</div>
                         <div class="kpi-value" style="color: var(--accent-green);" id="kpi-success">0</div>
                     </div>
-                    <div class="kpi-box" style="border-color: rgba(59, 130, 246, 0.4);">
-                        <div class="kpi-label">Served by Server A</div>
-                        <div class="kpi-value" style="color: #60A5FA;" id="kpi-srv-a">0</div>
-                    </div>
-                    <div class="kpi-box" style="border-color: rgba(16, 185, 129, 0.4);">
-                        <div class="kpi-label">Served by Server B</div>
-                        <div class="kpi-value" style="color: #34D399;" id="kpi-srv-b">0</div>
+                    <div class="kpi-box">
+                        <div class="kpi-label">Failovers</div>
+                        <div class="kpi-value" style="color: var(--accent-amber);" id="kpi-failovers">0</div>
                     </div>
                 </div>
 
-                <div class="kpi-box" style="margin-top: 14px;">
-                    <div class="kpi-label">Failover Events Detected</div>
-                    <div style="display: flex; justify-content: space-between; align-items: baseline;">
-                        <div class="kpi-value" style="color: var(--accent-amber);" id="kpi-failovers">0</div>
-                        <div style="font-size: 0.75rem; color: var(--text-muted);" id="kpi-last-failover">No failover events yet</div>
+                <div class="kpi-row" style="grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 10px;">
+                    <div class="kpi-box" style="border-color: rgba(59, 130, 246, 0.4);">
+                        <div class="kpi-label">Server A (:5001)</div>
+                        <div class="kpi-value" style="color: #60A5FA;" id="kpi-srv-a">0</div>
                     </div>
+                    <div class="kpi-box" style="border-color: rgba(16, 185, 129, 0.4);">
+                        <div class="kpi-label">Server B (:5002)</div>
+                        <div class="kpi-value" style="color: #34D399;" id="kpi-srv-b">0</div>
+                    </div>
+                    <div class="kpi-box" style="border-color: rgba(168, 85, 247, 0.4);">
+                        <div class="kpi-label">Server C (:5003)</div>
+                        <div class="kpi-value" style="color: #C084FC;" id="kpi-srv-c">0</div>
+                    </div>
+                </div>
+
+                <div class="kpi-box" style="margin-top: 10px;">
+                    <div class="kpi-label">Last Failover Event</div>
+                    <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 4px; font-family: var(--font-mono);" id="kpi-last-failover">No failover events yet</div>
                 </div>
             </div>
         </div>
@@ -819,8 +941,17 @@
 
                 // Update Header
                 document.getElementById('lbl-ist-time').innerText = data.timestamp_ist;
-                document.getElementById('lbl-ingress-route').innerText = `HAProxy :80 → ${data.active_ingress_server}`;
-                document.getElementById('haproxy-target-srv').innerText = data.active_ingress_server;
+                const ingressTarget = data.active_ingress_server;
+                let ingressDesc = 'HAProxy :80 → SERVER_A (Primary Active)';
+                if (ingressTarget === 'SERVER_B') {
+                    ingressDesc = 'HAProxy :80 → SERVER_B (Backup Active)';
+                } else if (ingressTarget === 'SERVER_C') {
+                    ingressDesc = 'HAProxy :80 → SERVER_C (Emergency Active)';
+                } else if (ingressTarget === 'NONE') {
+                    ingressDesc = 'HAProxy :80 → ALL BACKENDS DOWN';
+                }
+                document.getElementById('lbl-ingress-route').innerText = ingressDesc;
+                document.getElementById('haproxy-target-srv').innerText = ingressTarget;
 
                 // Server A Card
                 const srvA = data.server_a;
@@ -841,11 +972,12 @@
                     ingressBadgeA.innerText = 'ACTIVE INGRESS';
                 } else if (srvA.status === 'RECOVERING' || srvA.is_recovering) {
                     badgeA.className = 'node-status-badge badge-recovering';
-                    const remSec = srvA.recovery_remaining_sec || '';
-                    badgeA.innerText = `● RECOVERING${remSec ? ' (' + remSec + 's left)' : ''}`;
+                    const remSec = srvA.recovery_remaining_sec || 0;
+                    const stgName = srvA.recovery_stage_name || 'Self-Healing';
+                    badgeA.innerText = `● RECOVERING (${remSec}s)`;
                     cardA.className = 'topology-node';
                     ingressBadgeA.className = 'node-status-badge badge-recovering';
-                    ingressBadgeA.innerText = '⟳ RECOVERING — Server B Serving';
+                    ingressBadgeA.innerText = `⟳ [Stage ${srvA.recovery_stage_index || 1}/4] ${stgName}`;
                 } else {
                     badgeA.className = 'node-status-badge badge-unhealthy';
                     badgeA.innerText = '● DOWN / OUTAGE';
@@ -865,12 +997,16 @@
                 const cardB = document.getElementById('card-server-b');
                 const ingressBadgeB = document.getElementById('badge-ingress-b');
 
-                // Server B: show ACTIVE whenever Server A is not fully healthy (outage OR recovering)
+                // Server B: active serving whenever Server A is not fully healthy & ready, unless C is active
                 const aNotReady = (srvA.status !== 'HEALTHY' || srvA.is_recovering);
-                const isBActive = (data.active_ingress_server === 'SERVER_B') || aNotReady;
+                const isCActive = (data.active_ingress_server === 'SERVER_C');
+                const isBActive = (data.active_ingress_server === 'SERVER_B') || (aNotReady && !isCActive && srvB.status === 'HEALTHY');
                 if (srvB.status === 'HEALTHY') {
                     badgeB.className = 'node-status-badge badge-healthy';
                     badgeB.innerText = '● HEALTHY';
+                } else {
+                    badgeB.className = 'node-status-badge badge-unhealthy';
+                    badgeB.innerText = `● ${srvB.status || 'DOWN'}`;
                 }
                 if (isBActive) {
                     cardB.className = 'topology-node active-backup';
@@ -882,31 +1018,81 @@
                     ingressBadgeB.innerText = 'STANDBY';
                 }
 
-                        // Update Failover Banner
+                // Server C Card
+                const srvC = data.server_c || { total_requests: 0, health_score: 100, cpu: 0, memory: 0, status: 'HEALTHY' };
+                document.getElementById('lbl-reqs-c').innerText = srvC.total_requests || 0;
+                document.getElementById('lbl-health-c').innerText = `${srvC.health_score || 0}%`;
+                document.getElementById('lbl-cpu-c').innerText = `${srvC.cpu || 0}%`;
+                document.getElementById('lbl-mem-c').innerText = `${srvC.memory || 0}%`;
+
+                const badgeC = document.getElementById('badge-status-c');
+                const cardC = document.getElementById('card-server-c');
+                const ingressBadgeC = document.getElementById('badge-ingress-c');
+
+                if (srvC.status === 'HEALTHY') {
+                    badgeC.className = 'node-status-badge badge-healthy';
+                    badgeC.innerText = '● HEALTHY';
+                } else {
+                    badgeC.className = 'node-status-badge badge-unhealthy';
+                    badgeC.innerText = `● ${srvC.status || 'DOWN'}`;
+                }
+
+                if (isCActive) {
+                    cardC.className = 'topology-node active-emergency';
+                    ingressBadgeC.className = 'node-status-badge badge-active';
+                    ingressBadgeC.innerText = 'ACTIVE SERVING TRAFFIC';
+                } else {
+                    cardC.className = 'topology-node';
+                    ingressBadgeC.className = 'node-status-badge badge-standby';
+                    ingressBadgeC.innerText = 'STANDBY';
+                }
+
+                // Update 4-Stage Autonomous Recovery Pipeline Card
+                const pipelineCard = document.getElementById('recovery-pipeline-card');
+                if (srvA.is_recovering) {
+                    pipelineCard.style.display = 'block';
+                    const stgIdx = srvA.recovery_stage_index || 1;
+                    const remSec = srvA.recovery_remaining_sec || 0;
+                    const prog = srvA.recovery_progress_pct || 0;
+                    document.getElementById('pipeline-remaining-badge').innerText = `${remSec}s remaining`;
+                    document.getElementById('recovery-progress-bar').style.width = `${Math.min(100, Math.max(6, prog))}%`;
+                    document.getElementById('recovery-stage-detail').innerText = 
+                        `[Stage ${stgIdx}/4: ${srvA.recovery_stage_name || ''}] — ${srvA.recovery_stage_description || ''}`;
+
+                    for (let s = 1; s <= 4; s++) {
+                        const stepEl = document.getElementById(`step-${s}`);
+                        if (stepEl) {
+                            if (s < stgIdx) {
+                                stepEl.className = 'recovery-step step-completed';
+                            } else if (s === stgIdx) {
+                                stepEl.className = 'recovery-step step-active';
+                            } else {
+                                stepEl.className = 'recovery-step';
+                            }
+                        }
+                    }
+                } else {
+                    pipelineCard.style.display = 'none';
+                }
+
+                // Update Failover Banner
                 const banner = document.getElementById('failover-banner');
                 const isADown = (srvA.status !== 'HEALTHY' || srvA.is_recovering);
                 if (isADown) {
                     banner.style.display = 'block';
                     document.getElementById('failover-time-badge').innerText = data.timestamp_ist;
                     if (srvA.is_recovering) {
+                        const stgName = srvA.recovery_stage_name || 'Self-Healing';
+                        document.getElementById('failover-headline').innerText = '⟳ AUTONOMOUS RECOVERY & TRAFFIC FAILOVER ACTIVE';
                         document.getElementById('failover-message').innerText =
-                            `Server A is RECOVERING (${srvA.recovery_remaining_sec}s remaining). Server B is actively handling ALL traffic during recovery window.`;
+                            `Server A is recovering [Stage ${srvA.recovery_stage_index || 1}/4: ${stgName}] (${srvA.recovery_remaining_sec}s remaining). All requests through port 5050 / HAProxy are routed to Backup Server B!`;
                     } else {
+                        document.getElementById('failover-headline').innerText = '⚡ HIGH AVAILABILITY FAILOVER ACTIVE';
                         document.getElementById('failover-message').innerText =
-                            'Server A is DOWN. HAProxy has rerouted 100% of traffic to Backup Server B.';
+                            'Server A simulated outage detected (HTTP 503). Automatic self-healing is initializing. HAProxy has rerouted 100% of user traffic to Backup Server B!';
                     }
                 } else {
                     banner.style.display = 'none';
-                }
-
-                // Auto-recovery countdown banner
-                const recBanner = document.getElementById('auto-recovery-banner');
-                if (data.auto_recovery_pending && data.auto_recovery_remaining_sec > 0) {
-                    recBanner.style.display = 'block';
-                    document.getElementById('auto-recovery-countdown').innerText =
-                        `Auto-recovery in ${data.auto_recovery_remaining_sec}s...`;
-                } else {
-                    recBanner.style.display = 'none';
                 }
 
                 // Update KPI values
@@ -915,6 +1101,7 @@
                 document.getElementById('kpi-success').innerText = summ.successful;
                 document.getElementById('kpi-srv-a').innerText = summ.server_a_hits;
                 document.getElementById('kpi-srv-b').innerText = summ.server_b_hits;
+                document.getElementById('kpi-srv-c').innerText = summ.server_c_hits || 0;
                 document.getElementById('kpi-failovers').innerText = summ.failover_count;
                 if (summ.last_failover_time) {
                     document.getElementById('kpi-last-failover').innerText = `Last: ${summ.last_failover_time}`;
@@ -964,12 +1151,7 @@
             try {
                 const res = await fetch('/api/demo/simulate-outage', { method: 'POST' });
                 const data = await res.json();
-                if (data.success) {
-                    // Show auto-recovery banner immediately
-                    document.getElementById('auto-recovery-banner').style.display = 'block';
-                    document.getElementById('auto-recovery-countdown').innerText =
-                        `Auto-recovery in ${data.auto_recovery_in_sec || 15}s... Server B is now handling all traffic.`;
-                }
+                updateHealth();
                 setTimeout(() => {
                     btn.disabled = false;
                     btn.innerHTML = '<span>💥 Simulate Server A Outage</span>';
@@ -1022,6 +1204,8 @@
                 srvPill = '<span class="server-pill pill-server-a">Server A</span>';
             } else if (log.served_by === 'SERVER_B') {
                 srvPill = '<span class="server-pill pill-server-b">Server B</span>';
+            } else if (log.served_by === 'SERVER_C') {
+                srvPill = '<span class="server-pill pill-server-c">Server C</span>';
             } else {
                 srvPill = `<span class="server-pill pill-error">${log.served_by}</span>`;
             }
